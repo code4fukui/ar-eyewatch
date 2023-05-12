@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>eyewatch - WebAR</title>
+<script src="https://code4fukui.github.io/aframe/dist/aframe-master.min.js"></script>
+</head><body>
+<a-scene antialias="true" background="color: gray">
+  <a-entity camera look-controls>
+    <a-text id=clock value="00:33:33" anchor="center" position="4.0 1.0 -5" color="white"></a-text>
+  </a-entity>
+</a-entity>
+</a-scene>
+<script type="module">
+const draw = () => {
+  const d = new Date();
+  const f = (n) => n < 10 ? "0" + n : n;
+  const time = f(d.getHours()) + ":" + f(d.getMinutes()) + ":" + f(d.getSeconds());
+  clock.setAttribute("value", time);
+  setTimeout(draw, 100);
+};
+draw();
+</script>
+</body></html>
